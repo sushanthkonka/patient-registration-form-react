@@ -1,106 +1,197 @@
 import logo from './logo.svg';
 import './App.css';
+import { TextField, Box, RadioGroup, Radio, Button, Typography, FormControl, InputLabel, Select, MenuItem, FormGroup, FormControlLabel, Checkbox } from '@mui/material';
 
 function App() {
   return (
     <div className="App">
       <form className="container">
-        <h1>Patient Registration Form</h1>
-        <h4>Thank you for applying to our practice. Please complete this patient registration form with your information, and a doctor will contact you shortly.</h4>
-        <hr/>
+        <Typography variant="h4" component="h1" gutterBottom>
+          Patient Registration Form
+        </Typography>
+        <Typography variant="body1" color="textSecondary">
+          Thank you for applying to our practice. Please complete this patient registration form with your information, and a doctor will contact you shortly.
+        </Typography>
+        <hr />
         <div className="form-row">
-            <label htmlFor="fname">Patient's Name*</label>
-            <div className="input-group">
-                <input type="text" id="fname" name="first" placeholder="First" required/>
-                <input type="text" id="lname" name="last" placeholder="Last" required/>
-            </div>
+          <label htmlFor="fname">Patient's Name*</label>
+          <div className="input-group">
+            <TextField
+              id="fname"
+              label="First"
+              variant="outlined"
+            />
+
+            <TextField
+              required
+              id="lname"
+              name="last"
+              label="Last"
+              variant="outlined"
+            />
+
+          </div>
         </div>
         <div className="form-row">
-            <label>Gender</label>
-            <div class="gender">
-                <label><input type="radio" name="gender" value="male"/> Male</label>
-                <label><input type="radio" name="gender" value="female"/> Female</label>
-            </div>
+          <label>Gender</label>
+          <div className="gender">
+            <FormControl component="fieldset" className="gender">
+              <RadioGroup row name="gender">
+                <FormControlLabel value="male" control={<Radio />} label="Male" />
+                <FormControlLabel value="female" control={<Radio />} label="Female" />
+              </RadioGroup>
+            </FormControl>
+
+          </div>
         </div>
         <div className="form-row">
-            <label htmlFor="Phone">Phone*</label>
-            <div className="input-group">
-            <input type="tel" id="Phone" name="Phone" placeholder="# # #  # # # # # # #" required/>
-            </div>
+          <label htmlFor="Phone">Phone*</label>
+          <div className="input-group">
+            <TextField
+              required
+              id="Phone"
+              name="Phone"
+              label="Phone"
+              placeholder="# # #  # # # # # # #"
+              type="tel"
+              variant="outlined"
+            />
+
+          </div>
         </div>
         <div className="form-row">
-            <label  htmlFor="DOB">Date of Birth*</label>
-            <div className="input-group">
-            <input  type="date" class="dateofbirth" id="DOB" name="dob"  required/>
-            </div>
+          <label htmlFor="DOB">Date of Birth*</label>
+          <div className="input-group">
+            <TextField
+              required
+              id="DOB"
+              name="dob"
+              label="Date of Birth"
+              type="date"
+              placeholder="MM/DD/YYYY"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+
+          </div>
         </div>
         <div className="form-row">
-            <label>Marital Status*</label>
-            <div className="status">
-                <label><input type="radio" name="MStatus" value="Single" required/> Single</label>
-                <label><input type="radio" name="MStatus" value="Married"/> Married</label>
-                <label><input type="radio" name="MStatus" value="Divorced"/> Divorced</label>
-                <label><input type="radio" name="MStatus" value="Widow"/> Widow</label>
-            </div>
+          <label>Marital Status*</label>
+          <div className="status">
+            <FormControl component="fieldset" className="status">
+              <RadioGroup row name="MStatus">
+                <FormControlLabel value="Single" control={<Radio required />} label="Single" />
+                <FormControlLabel value="Married" control={<Radio />} label="Married" />
+                <FormControlLabel value="Divorced" control={<Radio />} label="Divorced" />
+                <FormControlLabel value="Widow" control={<Radio />} label="Widow" />
+              </RadioGroup>
+            </FormControl>
+
+          </div>
         </div>
 
         <div className="form-row-address">
-            <label htmlFor="PAddress">Patient's Address*</label>
-            <div className="address">
-                <input type="text" class="Street-Address" id="Address" name="street_address" placeholder="Street Address" required/>
+          <label htmlFor="PAddress">Patient's Address*</label>
+          <div className="address">
+            <TextField
+              id="Address"
+              name="street_address"
+              label="Street Address"
+            />
 
-                <div className="city_state">
-                    <input type="text" class="city-address" name="city" placeholder="City" required/>
-                    <input type="text" class="state-address" name="state" placeholder="State" required/>
-                </div>
 
-                <div className="zip_country">
-                    <input type="text" className="zip-address" name="zip" placeholder="Postal/Zip Code" required/>
-                    <select className="country-dropdown" name="country" required>
-                        <option value="">Country</option>
-                        <option value="us">United States</option>
-                        <option value="ca">Canada</option>
-                        <option value="uk">United Kingdom</option>
-                        <option value="au">Australia</option>
-                        <option value="in">India</option>
-                        <option value="de">Germany</option>
-                        <option value="fr">France</option>
-                        <option value="jp">Japan</option>
-                        <option value="cn">China</option>
-                    </select>
-                </div>
+            <div className="city_state">
+              <TextField
+                required
+                name="city"
+                label="City"
+              />
+              <TextField
+                required
+                name="state"
+                label="State"
+                placeholder="State"
+              />
             </div>
+
+            <div className="zip_country">
+              <TextField
+                required
+                name="zip"
+                label="Postal/Zip Code"
+              />
+
+              <FormControl fullWidth required className="country-dropdown">
+                <InputLabel id="country-label">Country</InputLabel>
+                <Select
+                  labelId="country-label"
+                  id="country"
+                  name="country"
+                  label="Country"
+                  defaultValue=""
+                >
+                  <MenuItem value="">Country</MenuItem>
+                  <MenuItem value="us">United States</MenuItem>
+                  <MenuItem value="ca">Canada</MenuItem>
+                  <MenuItem value="uk">United Kingdom</MenuItem>
+                  <MenuItem value="au">Australia</MenuItem>
+                  <MenuItem value="in">India</MenuItem>
+                  <MenuItem value="de">Germany</MenuItem>
+                  <MenuItem value="fr">France</MenuItem>
+                  <MenuItem value="jp">Japan</MenuItem>
+                  <MenuItem value="cn">China</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+          </div>
         </div>
 
         <div className="form-row">
-            <label htmlFor="Iname">Insurance Name*</label>
-            <div className="input-group">
-            <input type="text" id="Iname" name="insurance_name" required/>
-            </div>
+          <label htmlFor="Iname">Insurance Name*</label>
+          <div className="input-group">
+            <TextField
+              required
+              id="Iname"
+              name="insurance_name"
+              label="Insurance Name"
+              placeholder="Insurance Name"
+            />
+
+          </div>
         </div>
 
         <div className="form-row-medical">
-            <label>Past Medical History*</label>
-            <div className="medical">
-                <label><input type="checkbox" name="medical_history" value="Anemia"/> Anemia</label>
-                <label><input type="checkbox" name="medical_history" value="Asthma"/> Asthma</label>
-                <label><input type="checkbox" name="medical_history" value="Bronchitis"/> Bronchitis</label>
-                <label><input type="checkbox" name="medical_history" value="Chickenpox"/> Chickenpox</label>
-                <label><input type="checkbox" name="medical_history" value="Diabetes"/> Diabetes</label>
-                <label><input type="checkbox" name="medical_history" value="Pneumonia"/> Pneumonia</label>
-                <label><input type="checkbox" name="medical_history" value="Thyroid Disease"/> Thyroid Disease</label>
-                <label><input type="checkbox" name="medical_history" value="Ulcer"/> Ulcer</label>
-                <label><input type="checkbox" name="medical_history" value="Other"/> Other</label>
-            </div>
+          <label>Past Medical History*</label>
+          <div className="medical">
+            <FormGroup>
+              <FormControlLabel control={<Checkbox name="medical_history" value="Anemia" />} label="Anemia" />
+              <FormControlLabel control={<Checkbox name="medical_history" value="Asthma" />} label="Asthma" />
+              <FormControlLabel control={<Checkbox name="medical_history" value="Bronchitis" />} label="Bronchitis" />
+              <FormControlLabel control={<Checkbox name="medical_history" value="Chickenpox" />} label="Chickenpox" />
+              <FormControlLabel control={<Checkbox name="medical_history" value="Diabetes" />} label="Diabetes" />
+              <FormControlLabel control={<Checkbox name="medical_history" value="Pneumonia" />} label="Pneumonia" />
+              <FormControlLabel control={<Checkbox name="medical_history" value="Thyroid Disease" />} label="Thyroid Disease" />
+              <FormControlLabel control={<Checkbox name="medical_history" value="Ulcer" />} label="Ulcer" />
+              <FormControlLabel control={<Checkbox name="medical_history" value="Other" />} label="Other" />
+            </FormGroup>
+          </div>
         </div>
 
-        <h2>Patient/Guardian Signature*</h2>
-        <p>According to our privacy policy and federal law, your information within this patient registration form will remain private at all times.</p>
+        <Typography variant="h6" component="h2">
+          Patient/Guardian Signature*
+        </Typography>
+        <Typography variant="body1" color="textSecondary">
+          According to our privacy policy and federal law, your information within this patient registration form will remain private at all times.
+        </Typography>
 
         <div className="Register-Button">
-            <button type="submit" class="button">REGISTER</button>
+
+          <Button type="submit" variant="contained" color="primary" fullWidth>
+            REGISTER
+          </Button>
         </div>
-    </form>
+      </form>
 
 
 
