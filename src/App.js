@@ -1,7 +1,47 @@
 import logo from './logo.svg';
 import './App.css';
 import NativeSelect from '@mui/material/NativeSelect';
+import { styled } from '@mui/material/styles';
+
 import { TextField, Box, RadioGroup, Radio, Button, Grid, Typography, FormControl, InputLabel, Select, MenuItem, FormGroup, FormControlLabel, Checkbox } from '@mui/material';
+
+const CustomRadio = styled(Radio)(({ theme }) => ({
+  padding: 8,
+  '&.MuiRadio-root': {
+    color: '#f0f0f0', 
+  },
+  '& .MuiSvgIcon-root': {
+    borderRadius: 0, 
+    backgroundColor: '#f0f0f0', 
+    width: 20,
+    height: 20, 
+  },
+  '&.Mui-checked .MuiSvgIcon-root': {
+    backgroundColor: 'black', 
+    color: 'black', 
+    
+  },
+}));
+
+const CustomCheckBox = styled(Checkbox)(({ theme }) => ({
+  padding: 8,
+  '&.MuiCheckbox-root': {
+    color: '#f0f0f0', 
+    border: 'none',
+  },
+  '& .MuiSvgIcon-root': {
+
+    borderRadius: 0, 
+    backgroundColor: '#f0f0f0', 
+    width: 20,
+    height: 20, 
+  },
+  '&.Mui-checked .MuiSvgIcon-root': {
+    backgroundColor: 'black',
+    color: 'black', 
+    
+  },
+}));
 
 function App() {
   return (
@@ -29,6 +69,18 @@ function App() {
                       label="First"
                       variant="outlined"
                       fullWidth
+                      sx={{
+                        '& .MuiOutlinedInput-root': {
+                          backgroundColor: '#f0f0f0', 
+                          borderRadius: '15px',
+                          '& fieldset': {
+                            border: 'none', 
+                          },
+                          '& input': {
+                            color: 'black', 
+                          },
+                        },
+                      }}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
@@ -39,6 +91,18 @@ function App() {
                       label="Last"
                       variant="outlined"
                       fullWidth
+                      sx={{
+                        '& .MuiOutlinedInput-root': {
+                          backgroundColor: '#f0f0f0', 
+                          borderRadius: '15px',
+                          '& fieldset': {
+                            border: 'none', 
+                          },
+                          '& input': {
+                            color: 'black', 
+                          },
+                        },
+                      }}
                     />
                   </Grid>
                 </Grid>
@@ -55,8 +119,8 @@ function App() {
               <Grid item xs={12} sm={9} sx={{ pl: 25 }}>
                 <FormControl component="fieldset">
                   <RadioGroup row name="gender">
-                    <FormControlLabel value="male" control={<Radio />} label="Male" />
-                    <FormControlLabel value="female" control={<Radio />} label="Female" />
+                    <FormControlLabel value="male" control={<CustomRadio />} label="Male" />
+                    <FormControlLabel value="female" control={<CustomRadio />} label="Female" />
                   </RadioGroup>
                 </FormControl>
               </Grid>
@@ -79,6 +143,18 @@ function App() {
                   type="tel"
                   variant="outlined"
                   fullWidth
+                  sx={{
+                    '& .MuiOutlinedInput-root': {
+                      backgroundColor: '#f0f0f0', 
+                      borderRadius: '15px',
+                      '& fieldset': {
+                        border: 'none', 
+                      },
+                      '& input': {
+                        color: 'black', 
+                      },
+                    },
+                  }}
                 />
               </Grid>
             </Grid>
@@ -97,10 +173,21 @@ function App() {
                   id="DOB"
                   name="dob"
                   type="date"
-                  placeholder="MM/DD/YYYY"
                   InputLabelProps={{
                     shrink: true,
                   }}
+                  sx={{
+                    backgroundColor: '#f0f0f0',
+                    borderRadius: '15px',
+                    '& fieldset': {
+                      border: 'none',
+                    },
+                    '& input': {
+                      color: 'black',
+                      px: '30px', 
+                    },
+                  }}
+                  
                   fullWidth
                 />
               </Grid>
@@ -117,10 +204,10 @@ function App() {
               <Grid item xs={12} sm={9} sx={{ pl: 18 }}>
                 <FormControl component="fieldset">
                   <RadioGroup row name="MStatus">
-                    <FormControlLabel value="Single" control={<Radio required />} label="Single" />
-                    <FormControlLabel value="Married" control={<Radio />} label="Married" />
-                    <FormControlLabel value="Divorced" control={<Radio />} label="Divorced" />
-                    <FormControlLabel value="Widow" control={<Radio />} label="Widow" />
+                    <FormControlLabel value="Single" control={<CustomRadio required />} label="Single" />
+                    <FormControlLabel value="Married" control={<CustomRadio />} label="Married" />
+                    <FormControlLabel value="Divorced" control={<CustomRadio />} label="Divorced" />
+                    <FormControlLabel value="Widow" control={<CustomRadio />} label="Widow" />
                   </RadioGroup>
                 </FormControl>
               </Grid>
@@ -142,14 +229,39 @@ function App() {
                   placeholder="Street Address"
                   fullWidth
                   sx={{ mb: 2 }}
+                  sx={{
+                    '& .MuiOutlinedInput-root': {
+                      backgroundColor: '#f0f0f0', 
+                      borderRadius: '15px',
+                      '& fieldset': {
+                        border: 'none', 
+                      },
+                      '& input': {
+                        color: 'black', 
+                      },
+                    },
+                  }}
+                  
                 />
-                <Grid container spacing={2}>
+                <Grid container spacing={2} sx={{ mt: 2 }}>
                   <Grid item xs={6}>
                     <TextField
                       required
                       name="city"
                       placeholder="City"
                       fullWidth
+                      sx={{
+                        '& .MuiOutlinedInput-root': {
+                          backgroundColor: '#f0f0f0', 
+                          borderRadius: '15px',
+                          '& fieldset': {
+                            border: 'none', 
+                          },
+                          '& input': {
+                            color: 'black', 
+                          },
+                        },
+                      }}
                     />
                   </Grid>
                   <Grid item xs={6}>
@@ -158,6 +270,18 @@ function App() {
                       id="state"
                       placeholder="State"
                       fullWidth
+                      sx={{
+                        '& .MuiOutlinedInput-root': {
+                          backgroundColor: '#f0f0f0', 
+                          borderRadius: '15px',
+                          '& fieldset': {
+                            border: 'none', 
+                          },
+                          '& input': {
+                            color: 'black', 
+                          },
+                        },
+                      }}
                     />
                   </Grid>
                 </Grid>
@@ -168,6 +292,18 @@ function App() {
                       id="zip"
                       placeholder="Postal/Zip"
                       fullWidth
+                      sx={{
+                        '& .MuiOutlinedInput-root': {
+                          backgroundColor: '#f0f0f0', 
+                          borderRadius: '15px',
+                          '& fieldset': {
+                            border: 'none', 
+                          },
+                          '& input': {
+                            color: 'black', 
+                          },
+                        },
+                      }}
                     />
                   </Grid>
                   <Grid item xs={6}>
@@ -177,10 +313,20 @@ function App() {
                         labelId="country-label"
                         id="country"
                         name="country"
-                        label="Country"
-                        defaultValue=""
+                        defaultValue="Country"
+                        sx={{
+                          backgroundColor: '#f0f0f0',
+                          borderRadius: '15px',
+                          '& fieldset': {
+                            border: 'none',
+                          },
+                          '& .MuiSelect-select': {
+                            color: 'black',
+                            px: '112px',
+                          },
+                        }}
                       >
-                        <MenuItem value="">Country</MenuItem>
+                        <MenuItem value="Country">Country</MenuItem>
                         <MenuItem value="us">United States</MenuItem>
                         <MenuItem value="ca">Canada</MenuItem>
                         <MenuItem value="uk">United Kingdom</MenuItem>
@@ -213,6 +359,18 @@ function App() {
                   name="insurance_name"
                   placeholder="Insurance Name"
                   fullWidth
+                  sx={{
+                    '& .MuiOutlinedInput-root': {
+                      backgroundColor: '#f0f0f0', 
+                      borderRadius: '15px',
+                      '& fieldset': {
+                        border: 'none', 
+                      },
+                      '& input': {
+                        color: 'black', 
+                      },
+                    },
+                  }}
                 />
               </Grid>
             </Grid>
@@ -227,15 +385,15 @@ function App() {
               </Grid>
               <Grid item xs={12} sm={9} sx={{ pl: 14 }}>
                 <FormGroup>
-                  <FormControlLabel control={<Checkbox name="medical_history" value="Anemia" />} label="Anemia" />
-                  <FormControlLabel control={<Checkbox name="medical_history" value="Asthma" />} label="Asthma" />
-                  <FormControlLabel control={<Checkbox name="medical_history" value="Bronchitis" />} label="Bronchitis" />
-                  <FormControlLabel control={<Checkbox name="medical_history" value="Chickenpox" />} label="Chickenpox" />
-                  <FormControlLabel control={<Checkbox name="medical_history" value="Diabetes" />} label="Diabetes" />
-                  <FormControlLabel control={<Checkbox name="medical_history" value="Pneumonia" />} label="Pneumonia" />
-                  <FormControlLabel control={<Checkbox name="medical_history" value="Thyroid Disease" />} label="Thyroid Disease" />
-                  <FormControlLabel control={<Checkbox name="medical_history" value="Ulcer" />} label="Ulcer" />
-                  <FormControlLabel control={<Checkbox name="medical_history" value="Other" />} label="Other" />
+                  <FormControlLabel control={<CustomCheckBox name="medical_history" value="Anemia" />} label="Anemia" />
+                  <FormControlLabel control={<CustomCheckBox name="medical_history" value="Asthma" />} label="Asthma" />
+                  <FormControlLabel control={<CustomCheckBox name="medical_history" value="Bronchitis" />} label="Bronchitis" />
+                  <FormControlLabel control={<CustomCheckBox name="medical_history" value="Chickenpox" />} label="Chickenpox" />
+                  <FormControlLabel control={<CustomCheckBox name="medical_history" value="Diabetes" />} label="Diabetes" />
+                  <FormControlLabel control={<CustomCheckBox name="medical_history" value="Pneumonia" />} label="Pneumonia" />
+                  <FormControlLabel control={<CustomCheckBox name="medical_history" value="Thyroid Disease" />} label="Thyroid Disease" />
+                  <FormControlLabel control={<CustomCheckBox name="medical_history" value="Ulcer" />} label="Ulcer" />
+                  <FormControlLabel control={<CustomCheckBox name="medical_history" value="Other" />} label="Other" />
                 </FormGroup>
               </Grid>
             </Grid>
