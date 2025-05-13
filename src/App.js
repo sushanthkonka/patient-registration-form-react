@@ -228,8 +228,7 @@ function App() {
                   id="Address"
                   placeholder="Street Address"
                   fullWidth
-                  sx={{ mb: 2 }}
-                  sx={{
+                  sx={{ mb: 2,
                     '& .MuiOutlinedInput-root': {
                       backgroundColor: '#f0f0f0', 
                       borderRadius: '15px',
@@ -307,14 +306,15 @@ function App() {
                     />
                   </Grid>
                   <Grid item xs={6}>
-                    <FormControl fullWidth required>
-                      <InputLabel id="country-label">Country</InputLabel>
+                    <FormControl fullWidth >
+                      <InputLabel id="country-label"></InputLabel>
                       <Select
                         labelId="country-label"
                         id="country"
                         name="country"
                         defaultValue="Country"
                         sx={{
+                          width: '200px',
                           backgroundColor: '#f0f0f0',
                           borderRadius: '15px',
                           '& fieldset': {
@@ -322,7 +322,7 @@ function App() {
                           },
                           '& .MuiSelect-select': {
                             color: 'black',
-                            px: '112px',
+                            px: '50px',
                           },
                         }}
                       >
