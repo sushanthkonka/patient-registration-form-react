@@ -5,6 +5,7 @@ import { styled } from '@mui/material/styles';
 
 import { TextField, Box, RadioGroup, Radio, Button, Grid, Typography, FormControl, InputLabel, Select, MenuItem, FormGroup, FormControlLabel, Checkbox } from '@mui/material';
 
+
 const CustomRadio = styled(Radio)(({ theme }) => ({
   padding: 8,
   '&.MuiRadio-root': {
@@ -44,6 +45,29 @@ const CustomCheckBox = styled(Checkbox)(({ theme }) => ({
 }));
 
 function App() {
+    const patient = {
+    id: 2,
+    name: "John Doe",
+    age: 30,
+    diagnosis: "Diabetes"
+  };
+
+  const registerPatient = () => {
+    fetch("http://localhost:5004/api/Patient/Register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(patient)
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log("Patient registered:", data);
+      })
+      .catch(error => {
+        console.error("Error registering patient:", error);
+      });
+  };
   return (
     <div className="App">
       <form className="container">
@@ -410,7 +434,7 @@ function App() {
 
             <div className="Register-Button">
 
-              <Button type="submit" variant="contained" color="primary" fullWidth sx={{ backgroundColor: 'black', color: 'white' }}>
+              <Button type="submit" variant="contained"  onClick={registerPatient} color="primary" fullWidth sx={{ backgroundColor: 'black', color: 'white' }}>
                 REGISTER
               </Button>
             </div> 
