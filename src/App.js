@@ -4,6 +4,7 @@ import NativeSelect from '@mui/material/NativeSelect';
 import { styled } from '@mui/material/styles';
 
 import { TextField, Box, RadioGroup, Radio, Button, Grid, Typography, FormControl, InputLabel, Select, MenuItem, FormGroup, FormControlLabel, Checkbox } from '@mui/material';
+import { useState } from 'react';
 
 
 const CustomRadio = styled(Radio)(({ theme }) => ({
@@ -45,14 +46,17 @@ const CustomCheckBox = styled(Checkbox)(({ theme }) => ({
 }));
 
 function App() {
-    const patient = {
+  const [firstName, setFirstName] = useState('');
+  const patient = {
     id: 2,
     name: "John Doe",
-    age: 30,
-    diagnosis: "Diabetes"
+    // age: 30,
+    // diagnosis: "Diabetes"
   };
 
   const registerPatient = () => {
+    patient.name=firstName;
+
     fetch("http://localhost:5004/api/Patient/Register", {
       method: "POST",
       headers: {
@@ -91,6 +95,8 @@ function App() {
                       required
                       id="fname"
                       label="First"
+                      value={firstName}
+                      onChange={(e)=> setFirstName(e.target.value)}
                       variant="outlined"
                       fullWidth
                       sx={{
