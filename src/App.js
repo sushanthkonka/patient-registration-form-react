@@ -47,7 +47,7 @@ const CustomCheckBox = styled(Checkbox)(({ theme }) => ({
 
 function App() {
   const [firstName, setFirstName] = useState('');
-  const [lastName, setlastName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [phoneNumber, setphoneNumber] = useState('');
   const [streetAdress, setstreetAddress] = useState('');
   const [cityAddress, setcityAddress] = useState('');
@@ -58,6 +58,7 @@ function App() {
   const [insuranceName, setinsuranceName] = useState('');
   const [dob, setDob] = useState('');
   const [medicalHistory, setMedicalHistory] = useState([]);
+  const [countryName, setCountryName] = useState([]);
 
 
   const patient = {
@@ -95,6 +96,7 @@ function App() {
     patient.Insurance_Name = insuranceName;
     patient.Date_Of_Birth = dob;
     patient.Medical_History = medicalHistory;
+    patient.Country_Name=countryName;
 
     fetch("http://localhost:5004/api/Patient/Register", {
       method: "POST",
@@ -159,7 +161,7 @@ function App() {
                       name="last"
                       label="Last"
                       value={lastName}
-                      onChange={(e) => setlastName(e.target.value)}
+                      onChange={(e) => setLastName(e.target.value)}
                       variant="outlined"
                       fullWidth
                       sx={{
@@ -410,6 +412,8 @@ function App() {
                         labelId="country-label"
                         id="country"
                         name="country"
+                        value={countryName}
+                        onChange={(e) => setCountryName(e.target.value)}
                         defaultValue="Country"
                         sx={{
                           width: '200px',
@@ -601,7 +605,7 @@ function App() {
 
         <div className="Register-Button">
 
-          <Button type="submit" variant="contained" onClick={registerPatient} color="primary" fullWidth sx={{ backgroundColor: 'black', color: 'white' }}>
+          <Button type="submit" variant="contained" onClick={(e) => { e.preventDefault(); registerPatient(); }} color="primary" fullWidth sx={{ backgroundColor: 'black', color: 'white' }}>
             REGISTER
           </Button>
         </div>
