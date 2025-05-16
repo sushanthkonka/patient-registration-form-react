@@ -47,15 +47,34 @@ const CustomCheckBox = styled(Checkbox)(({ theme }) => ({
 
 function App() {
   const [firstName, setFirstName] = useState('');
+  const [lastName, setlastName] = useState('');
+  const [phoneNumber, setphoneNumber] = useState('');
+  const [streetAdress, setstreetAddress] = useState('');
+  const [cityAddress, setcityAddress] = useState('');
+  const [stateAdress, setstateAddress] = useState('');
+  const [zipCode, setzipCode] = useState('');
+  const [gender, setgender] = useState('');
+  const [maritalStatus, setmaritalStatus] = useState('');
+  const [insuranceName, setinsuranceName] = useState('');
+  
   const patient = {
     id: 2,
-    name: "John Doe",
+    First_Name: "John Doe",
     // age: 30,
     // diagnosis: "Diabetes"
   };
 
   const registerPatient = () => {
-    patient.name=firstName;
+    patient.First_Name=firstName;
+    patient.Last_Name=lastName;
+    patient.Phone_Number=phoneNumber;
+    patient.Street_Address=streetAdress;
+    patient.City_Address=cityAddress;
+    patient.State_Address=stateAdress;
+    patient.Zip_Code=zipCode;
+    patient.Gender=gender;
+    patient.Marital_Status= maritalStatus;
+    patient.Insurance_Name=insuranceName;
 
     fetch("http://localhost:5004/api/Patient/Register", {
       method: "POST",
@@ -119,6 +138,8 @@ function App() {
                       id="lname"
                       name="last"
                       label="Last"
+                      value={lastName}
+                      onChange={(e)=> setlastName(e.target.value)}
                       variant="outlined"
                       fullWidth
                       sx={{
@@ -148,7 +169,12 @@ function App() {
               </Grid>
               <Grid item xs={12} sm={9} sx={{ pl: 25 }}>
                 <FormControl component="fieldset">
-                  <RadioGroup row name="gender">
+                  <RadioGroup row name="gender"
+                    value={gender}
+                    onChange={(e) => {
+                      setgender(e.target.value);
+                      console.log("Selected gender:", e.target.value);
+                    }}>
                     <FormControlLabel value="male" control={<CustomRadio />} label="Male" />
                     <FormControlLabel value="female" control={<CustomRadio />} label="Female" />
                   </RadioGroup>
@@ -170,6 +196,8 @@ function App() {
                   id="Phone"
                   name="Phone"
                   placeholder="# # #  # # # # # # #"
+                  value={phoneNumber}
+                  onChange={(e)=> setphoneNumber(e.target.value)}
                   type="tel"
                   variant="outlined"
                   fullWidth
@@ -256,6 +284,8 @@ function App() {
                 <TextField
                   required
                   id="Address"
+                  value={streetAdress}
+                  onChange={(e)=> setstreetAddress(e.target.value)}
                   placeholder="Street Address"
                   fullWidth
                   sx={{ mb: 2,
@@ -277,6 +307,8 @@ function App() {
                     <TextField
                       required
                       name="city"
+                      value={cityAddress}
+                      onChange={(e)=> setcityAddress(e.target.value)}
                       placeholder="City"
                       fullWidth
                       sx={{
@@ -297,6 +329,8 @@ function App() {
                     <TextField
                       required
                       id="state"
+                      value={stateAdress}
+                      onChange={(e)=> setstateAddress(e.target.value)}
                       placeholder="State"
                       fullWidth
                       sx={{
@@ -319,6 +353,8 @@ function App() {
                     <TextField
                       required
                       id="zip"
+                      value={zipCode}
+                      onChange={(e)=> setzipCode(e.target.value)}
                       placeholder="Postal/Zip"
                       fullWidth
                       sx={{
@@ -387,6 +423,8 @@ function App() {
                   required
                   id="Iname"
                   name="insurance_name"
+                  value={insuranceName}
+                  onChange={(e)=> setinsuranceName(e.target.value)}
                   placeholder="Insurance Name"
                   fullWidth
                   sx={{
