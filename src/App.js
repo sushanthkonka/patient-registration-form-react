@@ -48,22 +48,23 @@ const CustomCheckBox = styled(Checkbox)(({ theme }) => ({
 function App() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [phoneNumber, setphoneNumber] = useState('');
-  const [streetAdress, setstreetAddress] = useState('');
-  const [cityAddress, setcityAddress] = useState('');
-  const [stateAdress, setstateAddress] = useState('');
-  const [zipCode, setzipCode] = useState('');
-  const [gender, setgender] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [streetAdress, setStreetAddress] = useState('');
+  const [cityAddress, setCityAddress] = useState('');
+  const [stateAdress, setStateAddress] = useState('');
+  const [zipCode, setZipCode] = useState('');
+  const [gender, setGender] = useState('');
   const [maritalStatus, setMaritalStatus] = useState('');
-  const [insuranceName, setinsuranceName] = useState('');
+  const [insuranceName, setInsuranceName] = useState('');
   const [dob, setDob] = useState('');
   const [medicalHistory, setMedicalHistory] = useState([]);
-  const [countryName, setCountryName] = useState([]);
+  const [countryName, setCountryName] = useState('');
+
 
 
   const patient = {
-    id: 2,
-    First_Name: "John Doe",
+    // id: 2,
+    // First_Name: "John Doe",
     // age: 30,
     // diagnosis: "Diabetes"
   };
@@ -194,7 +195,7 @@ function App() {
                   <RadioGroup row name="gender"
                     value={gender}
                     onChange={(e) => {
-                      setgender(e.target.value);
+                      setGender(e.target.value);
                       console.log("Selected gender:", e.target.value);
                     }}>
                     <FormControlLabel value="male" control={<CustomRadio />} label="Male" />
@@ -219,7 +220,7 @@ function App() {
                   name="Phone"
                   placeholder="# # #  # # # # # # #"
                   value={phoneNumber}
-                  onChange={(e) => setphoneNumber(e.target.value)}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
                   type="tel"
                   variant="outlined"
                   fullWidth
@@ -318,7 +319,7 @@ function App() {
                   required
                   id="Address"
                   value={streetAdress}
-                  onChange={(e) => setstreetAddress(e.target.value)}
+                  onChange={(e) => setStreetAddress(e.target.value)}
                   placeholder="Street Address"
                   fullWidth
                   sx={{
@@ -342,7 +343,7 @@ function App() {
                       required
                       name="city"
                       value={cityAddress}
-                      onChange={(e) => setcityAddress(e.target.value)}
+                      onChange={(e) => setCityAddress(e.target.value)}
                       placeholder="City"
                       fullWidth
                       sx={{
@@ -364,7 +365,7 @@ function App() {
                       required
                       id="state"
                       value={stateAdress}
-                      onChange={(e) => setstateAddress(e.target.value)}
+                      onChange={(e) => setStateAddress(e.target.value)}
                       placeholder="State"
                       fullWidth
                       sx={{
@@ -388,7 +389,7 @@ function App() {
                       required
                       id="zip"
                       value={zipCode}
-                      onChange={(e) => setzipCode(e.target.value)}
+                      onChange={(e) => setZipCode(e.target.value)}
                       placeholder="Postal/Zip"
                       fullWidth
                       sx={{
@@ -460,7 +461,7 @@ function App() {
                   id="Iname"
                   name="insurance_name"
                   value={insuranceName}
-                  onChange={(e) => setinsuranceName(e.target.value)}
+                  onChange={(e) => setInsuranceName(e.target.value)}
                   placeholder="Insurance Name"
                   fullWidth
                   sx={{
