@@ -60,12 +60,7 @@ function App() {
 
 
 
-  const patient = {
-    // id: 2,
-    // First_Name: "John Doe",
-    // age: 30,
-    // diagnosis: "Diabetes"
-  };
+  const patient = { };
 
   const handleCheckboxChange = (event) => {
   const { value, checked } = event.target;
@@ -97,7 +92,7 @@ function App() {
     patient.Medical_History = medicalHistory;
     patient.Country_Name=countryName;
 
-    fetch("http://localhost:5004/api/Patient/Register", {
+    fetch("https://sk-patient-registration-form-react-ddhxgfhvgpcwbxdj.centralus-01.azurewebsites.net/api/Patient/Register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
